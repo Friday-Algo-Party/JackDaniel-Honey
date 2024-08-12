@@ -35,9 +35,15 @@ public class Main {
             StringTokenizer st2 = new StringTokenizer(br.readLine());
             node1 = Integer.parseInt(st2.nextToken());
             node2 = Integer.parseInt(st2.nextToken());
+            // 양방향 연결
             graph.get(node1).add(node2);
             graph.get(node2).add(node1);
 //			System.out.println(graph);
+        }
+
+        // 방문할 수 있는 정점이 여러 개인 경우에는 정점 번호가 작은 것부터 방문 -> sort
+        for(int i = 1; i <= N; i++) {
+            Collections.sort(graph.get(i));
         }
 
         dfs(V);
