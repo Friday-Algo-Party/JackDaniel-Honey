@@ -31,7 +31,7 @@ public class Main {
             else {
                 N -= 3;
                 cnt += 1;
-//                System.out.println("걍 3 뺄게, 결과는 " + N);
+//                System.out.println("걍 3 빼볼게, 결과는 " + N);
 //                System.out.println("cnt는 " + cnt);
                 if (N < 0) {
                     cnt = -1;
