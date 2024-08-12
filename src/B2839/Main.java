@@ -15,7 +15,6 @@ public class Main {
         while (N > 0) {
             if (N % 5 == 0) {
                 cnt += N/5;
-//                N /= 5;
 //                System.out.println("5로 나눠지네, 결과는 " + N);
 //                System.out.println("cnt는 " + cnt);
                 break;
@@ -32,7 +31,7 @@ public class Main {
             else {
                 N -= 3;
                 cnt += 1;
-//                System.out.println("3 뺄게, 결과는 " + N);
+//                System.out.println("걍 3 뺄게, 결과는 " + N);
 //                System.out.println("cnt는 " + cnt);
                 if (N < 0) {
                     cnt = -1;
