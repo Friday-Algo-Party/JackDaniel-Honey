@@ -1,6 +1,8 @@
-package B1260;
+package B1260_Array;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.*;
 
 public class Main {
@@ -12,7 +14,7 @@ public class Main {
     public static int node2 = 0;
 
     public static boolean[] visitedFlag;
-    public static ArrayList<ArrayList<Integer>> graph;
+    public static int[][] arr;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -22,28 +24,15 @@ public class Main {
         M = Integer.parseInt(st1.nextToken());
         V = Integer.parseInt(st1.nextToken());
 
+        arr = new int[1001][1001];
         visitedFlag = new boolean[N + 1];
-
-        graph = new ArrayList<ArrayList<Integer>>();
-
-        // 리스트 초기화
-        for (int i = 0; i <= N; i++) {
-            graph.add(new ArrayList<Integer>());
-        }
 
         for (int i = 0; i < M; i++) {
             StringTokenizer st2 = new StringTokenizer(br.readLine());
             node1 = Integer.parseInt(st2.nextToken());
             node2 = Integer.parseInt(st2.nextToken());
             // 양방향 연결
-            graph.get(node1).add(node2);
-            graph.get(node2).add(node1);
-//			System.out.println(graph);
-        }
-
-        // 방문할 수 있는 정점이 여러 개인 경우에는 정점 번호가 작은 것부터 방문 -> sort
-        for(int i = 1; i <= N; i++) {
-            Collections.sort(graph.get(i));
+            arr[node1][node2] = arr[node2][node1] = 1;
         }
 
         dfs(V);
@@ -52,13 +41,13 @@ public class Main {
         bfs(V);
     }
 
-    public static void dfs(int point) {
+    public static void dfs (int point) {
         visitedFlag[point] = true;
         System.out.print(point + " ");
 
-        for (int node : graph.get(point)) {
-            if(!visitedFlag[node]) {
-                dfs(node);
+        for (int i = 1; i <= N; i++) {
+            if(arr[point][i] == 1 && !visitedFlag[i]) {
+                dfs(i);
             }
         }
     }
@@ -73,10 +62,10 @@ public class Main {
             int target = queue.poll(); // 빼낸다
             System.out.print(target + " ");
 
-            for (int node : graph.get(target)) {
-                if(!visitedFlag[node]) {
-                    queue.offer(node);
-                    visitedFlag[node] = true;
+            for (int i = 1; i < arr.length; i++) {
+                if (arr[target][i] == 1 && !visitedFlag[i]) {
+                    queue.add(i);
+                    visitedFlag[i] = true;
                 }
             }
         }
