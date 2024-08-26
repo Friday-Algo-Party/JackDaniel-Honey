@@ -37,10 +37,10 @@ public class Main {
     public static void bfs() {
         Queue<int[]> queue = new LinkedList<>();
         queue.add(new int[]{1, 1}); // 시작 위치 삽입
-        visited[1][1] = true;
+        visited[1][1] = true; // 시작 위치 방문 처리
 
         while(!queue.isEmpty()) {
-            int[] current = queue.poll();
+            int[] current = queue.poll(); // 큐에서 현재 위치 꺼냄
             int x = current[0];
             int y = current[1];
 
@@ -55,11 +55,12 @@ public class Main {
                 int nx = x + dx[i];
                 int ny = y + dy[i];
 
+                // 미로 범위 벗어나지 않도록 체크
                 if (nx > 0 && ny > 0 && nx <= N && ny <= M) {
                     if (maze[nx][ny] == 1 && !visited[nx][ny]) {
-                        visited[nx][ny] = true;
+                        visited[nx][ny] = true; // 방문 처리
                         maze[nx][ny] = maze[x][y] + 1; // 현재 칸 까지의 거리 + 1
-                        queue.add(new int[]{nx, ny});
+                        queue.add(new int[]{nx, ny}); // 큐에 새 위치 추가
                     }
                 }
             }
