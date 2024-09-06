@@ -17,6 +17,7 @@ public class Main {
         }
 
         Collections.sort(arr);
+        // arr.sort(null);
 
         StringBuilder sb = new StringBuilder();
         for (int num: arr) {
