@@ -16,7 +16,7 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         N = Integer.parseInt(br.readLine());
 
-        int[][] village = new int[N][N];  // 배열 크기를 N으로 변경
+        int[][] village = new int[N][N];
         ArrayList<Integer> sameVillage = new ArrayList<>();
 
         for(int i = 0; i < N; i++) {
