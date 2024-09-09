@@ -18,11 +18,12 @@ public class Main {
         int T = Integer.parseInt(br.readLine()); // 테스트 케이스의 개수
         for (int i = 0; i < T; i++) {
             StringTokenizer st = new StringTokenizer(br.readLine());
-            M = Integer.parseInt(st.nextToken());
-            N = Integer.parseInt(st.nextToken());
-            K = Integer.parseInt(st.nextToken());
+            M = Integer.parseInt(st.nextToken()); // 가로 길이
+            N = Integer.parseInt(st.nextToken()); // 세로 길이
+            K = Integer.parseInt(st.nextToken()); // 배추 위치의 개수
             int[][] farm = new int[M][N];
 
+            // 배추가 심어져 있는 좌표를 1로 지정
             for (int j = 0; j < K; j++) {
                 StringTokenizer st2 = new StringTokenizer(br.readLine());
                 int X = Integer.parseInt(st2.nextToken());
@@ -32,6 +33,7 @@ public class Main {
 
             for(int x = 0; x < M; x++) {
                 for(int y = 0; y < N; y++) {
+                    // 좌표가 1이라면
                     if(farm[x][y] == 1) {
                         cnt++;
                         dfs(farm, x, y);
@@ -44,7 +46,7 @@ public class Main {
     }
 
     public static void dfs(int[][] farm, int i, int j) {
-        farm[i][j] = 0;
+        farm[i][j] = 0; // 다시 방문하지 않도록 현재 좌표를 0으로 만들어 줌
         for (int k = 0; k < 4; k++) {
             int x = i + dx[k];
             int y = j + dy[k];
