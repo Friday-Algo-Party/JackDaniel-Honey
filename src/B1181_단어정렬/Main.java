@@ -17,8 +17,8 @@ public class Main {
         }
 
         List<String> wordsList = new ArrayList<>(words);
-        wordsList.sort(Comparator.comparingInt(String::length)
-                .thenComparing(Comparator.naturalOrder()));
+        wordsList.sort(Comparator.comparingInt(String::length) // 길이가 짧은 것부터
+                .thenComparing(Comparator.naturalOrder())); // 길이가 같으면 사전 순으로
 
         for (String word : wordsList) {
             System.out.println(word);
