@@ -14,6 +14,7 @@ public class Main {
             return;
         }
 
+        // dp 사용
         int[] tiles = new int[n + 1];
         tiles[1] = 1;
         tiles[2] = 2;
