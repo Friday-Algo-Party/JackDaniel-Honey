@@ -31,9 +31,6 @@ public class Main {
 
         BFS(1);
 
-//        for(int i = 2; i <= N; i++) {
-//            System.out.println(parent[i]);
-//        }
         StringBuilder sb = new StringBuilder();
         for(int i = 2; i <= N; i++) {
             sb.append(parent[i]).append('\n');
