@@ -15,13 +15,18 @@ public class Main {
         for (int i = 1; i <= N; i++) {
             scores[i] = Integer.parseInt(br.readLine());
         }
+        if (N == 1) {
+            System.out.println(scores[1]);
+            return;
+        }
 
         maxScore[1] = scores[1];
         maxScore[2] = scores[1] + scores[2];
 
         for (int i = 3; i <= N; i++) {
-            maxScore[i] = Math.max(maxScore[i-2], maxScore[i-3] + maxScore[i-1] + scores[i]);
+            maxScore[i] = Math.max(maxScore[i-2], maxScore[i-3] + scores[i-1]) + scores[i];
         }
+
         System.out.println(maxScore[N]);
     }
 }
