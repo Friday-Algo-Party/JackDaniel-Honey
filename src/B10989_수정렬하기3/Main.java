@@ -1,4 +1,4 @@
-package B10989;
+package B10989_수정렬하기3;
 
 import java.io.*;
 import java.util.Arrays;
