@@ -11,7 +11,7 @@ import java.util.StringTokenizer;
 public class Main {
     static boolean[] visitedFlag;
     static ArrayList<ArrayList<Integer>> graph;
-    static int cnt;
+    static int cnt = 0;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -22,11 +22,9 @@ public class Main {
         visitedFlag = new boolean[N + 1];
         graph = new ArrayList<>();
 
-        int point = 0;
-
         // 리스트 초기화
         for (int i = 0; i <= N; i++) {
-            graph.add(new ArrayList<>());
+            graph.add(new ArrayList<>()); // 각 노드에 연결된 노드들을 담을 빈 리스트 생성
         }
 
         for (int i = 0; i < M; i++) {
@@ -37,10 +35,16 @@ public class Main {
             graph.get(v).add(u);
         }
 
-        System.out.println(bfs(point));
+        // 모든 노드를 확인하여 연결되지 않은 요소 탐색
+        for(int i = 1; i <= N; i++) {
+            if(!visitedFlag[i]) {
+                bfs(i);
+            }
+        }
+        System.out.println(cnt);
     }
 
-    public static int bfs(int point) {
+    public static void bfs(int point) {
         Queue<Integer> queue = new LinkedList<>();
 
         queue.offer(point);
@@ -55,6 +59,6 @@ public class Main {
                 }
             }
         }
-        return cnt;
+        cnt++;
     }
 }
