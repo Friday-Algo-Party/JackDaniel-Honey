@@ -15,10 +15,10 @@ public class Main {
         for (int i = 0; i < K; i++) {
             int num = Integer.parseInt(br.readLine());
             if (num == 0) {
-                sum -= list.pop(); // pop
+                sum -= list.pop();
             } else {
                 sum += num;
-                list.push(num); // push
+                list.push(num);
             }
         }
 
